@@ -1,0 +1,48 @@
+<div class="row form-content">
+  <div class="col-md-12">
+    
+    <h2>Login</h2>
+    
+    <div class="card">
+
+      <div class="card-body">
+        <div *ngIf="errorMessage">
+          <div class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+          </div>
+        </div>
+        <form (ngSubmit)="onSubmit()" ngNativeValidate>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              [(ngModel)]="user.username"
+              name="username"
+              type="email"
+              required
+              class="form-control"
+              id="username"
+              placeholder="your-email@test.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              [(ngModel)]="user.password"
+              name="password"
+              type="password"
+              pattern=".{6,20}"
+              required
+              title="6 to 20 characters"
+              required
+              class="form-control"
+              id="password"
+              placeholder="enter a password"
+            />
+            
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
