@@ -20,7 +20,7 @@ export class LogInComponent implements OnInit {
     this.getState = this.store.select(selectLoginState);
   }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.getState.subscribe((state) => {});
   }
 

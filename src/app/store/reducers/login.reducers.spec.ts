@@ -32,6 +32,7 @@ describe('Store > Data > Reducer', () => {
 
     expect(state.userData).toEqual(payload);
   });
+  
   it('SHOULD load logout data', () => {
     const { initialState } = fromReducer;
     const payload = null;

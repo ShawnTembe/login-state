@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule} from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +17,7 @@ import { LoginService } from './services/login.service';
 import { LoginEffects } from './store/effects/login.effects';
 import { reducers } from './store/app.states';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppState } from './store/app.states';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot( reducers ),
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([LoginEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 15, // Retains last 15 states

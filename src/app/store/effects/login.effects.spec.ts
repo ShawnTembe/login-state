@@ -36,7 +36,7 @@ describe('LoginEffects', () => {
     expect(effects).toBeTruthy();
   });
 
-  it('should work', () => {
+  it('should login successful', () => {
     const action = new LoginAction.LogIn({
       username: 'test@test.com',
       password: '123456'
@@ -46,6 +46,18 @@ describe('LoginEffects', () => {
     const expected = cold('b|', { b: completion });
 
     expect(effects.LogInSuccess).toBeTruthy(expected);
+  });
+
+  it('should login fail', () => {
+    const action = new LoginAction.LogIn({
+      username: 'abc',
+      password: '1236'
+    });
+    const completion = new LoginAction.LogInFailure({ user });
+    actions$ = hot('a|', { a: action });
+    const expected = cold('b|', { b: completion });
+
+    expect(effects.LogInFailure).toBeTruthy(expected);
   });
 
 });
